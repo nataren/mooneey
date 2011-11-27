@@ -75,3 +75,22 @@ exports.update = function(userId, user, cb) {
 		}
 	});
 }
+
+exports.delete = function(userId, cb) {
+	var client = db.createClient();
+	client.query('DELETE FROM user WHERE user_id = ?', [userId],
+		function(err, rows, fields) {
+			if (err) {
+				throw err;
+			}
+			var res = {
+				'data': rows,
+				'status': 200
+			};
+			client.end();
+			if (cb) {
+				cb(res);
+			}
+		});
+}
+

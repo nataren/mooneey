@@ -44,9 +44,7 @@ app.get('/user', user.readAll);
 app.put('/user/:id', user.update);
 
 // Delete
-app.delete('user/:id', function(req, res) {
-	// Delete the user
-});
+app.delete('/user/:id', user.delete);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

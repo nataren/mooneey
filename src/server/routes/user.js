@@ -25,3 +25,9 @@ exports.update = function(req, res) {
 		res.json(r.data, r.status);
 	});
 }
+
+exports.delete = function(req, res) {
+	userDA.delete(req.params.id, function(r) {
+		res.json(r.data, r.status);
+	});
+}
