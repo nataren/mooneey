@@ -1,15 +1,27 @@
 // user.js: user routes handlers
 
-var user_da = require('../da/user.js');
+var userDA = require('../da/user.js');
 
 exports.create = function(req, res) {
-	user_da.create(req.body, function(r) {
+	userDA.create(req.body, function(r) {
 		res.json(r.data, r.status);	
 	});
 }
 
 exports.read = function(req, res) {
-	user_da.read(req.params.id, function(r) {
+	userDA.read(req.params.id, function(r) {
+		res.json(r.data, r.status);
+	});
+}
+
+exports.readAll = function(req, res) {
+	userDA.readAll(function(r) {
+		res.json(r.data, r.status);
+	});
+}
+
+exports.update = function(req, res) {
+	userDA.update(req.params.id, req.body, function(r) {
 		res.json(r.data, r.status);
 	});
 }

@@ -38,11 +38,10 @@ app.post('/user', user.create);
 
 // Read
 app.get('/user/:id', user.read);
+app.get('/user', user.readAll);
 
-// Update
-app.put('/user/:id', function(req, res) {
-	// Update the user with the new data
-});
+// Update the user with the new data
+app.put('/user/:id', user.update);
 
 // Delete
 app.delete('user/:id', function(req, res) {
