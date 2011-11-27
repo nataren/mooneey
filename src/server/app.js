@@ -37,18 +37,17 @@ app.get('/', routes.index);
 app.post('/user', user.create);
 
 // Read
-app.get('/user/:id', function(req, res) {
-	// get the user from the db
-});
+app.get('/user/:id', user.read);
+
 // Update
 app.put('/user/:id', function(req, res) {
 	// Update the user with the new data
 });
+
 // Delete
 app.delete('user/:id', function(req, res) {
 	// Delete the user
 });
-
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

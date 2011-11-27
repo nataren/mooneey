@@ -14,6 +14,10 @@ exports.toHttpStatus = function(sqlResponse) {
 	switch(sqlResponse) {
 	case 2:
 		return 200;
+		
+	case undefined:
+		throw Error('MySQL response is undefined');
+		
 	default:
 		throw Error('Unmapped MySQL response:' + sqlResponse);
 	}

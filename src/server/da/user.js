@@ -19,3 +19,22 @@ exports.create = function(user, cb) {
 			}
 		});
 }
+
+exports.read = function(userId, cb) {
+	var client = db.createClient();
+	client.query('SELECT * FROM user WHERE user_id = ?', [userId],
+		function(err, rows, fields) {
+			if (err) {
+				throw err;
+			}
+			var res = {
+				'data': rows,
+				'status': 200
+			};
+			client.end();
+
+			if (cb) {
+				cb(res);
+			}
+		});
+}
