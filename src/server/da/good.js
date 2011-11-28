@@ -45,10 +45,32 @@ exports.readAll = function(cb) {
 	});
 }
 
-exports.update = function() {
-	
+exports.update = function(goodId, good, cb) {
+	var client = db.createClient();
+	client.query('UPDATE good SET good_name = ?, good_date = ?, good_unit_price = ? WHERE good_id = ?',
+		[good.name, good.date, good.unit_price, goodId],
+		function(err, rows, fields) {
+			if (err) {
+				throw err;
+			}
+			var res = {'data': rows, 'status': 200 };
+			client.end();
+			if (cb) {
+				cb (res);
+			}
+		});
 }
 
-exports.delete = function() {
-	
+exports.delete = function(goodId, cb) {
+	var client = db.createClient();
+	client.query("DELETE FROM good WHERE good_id = ?", [goodId], function(err, rows, fields) {
+		if (err) {
+			throw err;
+		}
+		var res = { 'data': rows, 'status': 200 };
+		client.end();
+		if (cb) {
+			cb (res);
+		}
+	});
 }

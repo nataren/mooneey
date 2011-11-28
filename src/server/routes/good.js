@@ -8,6 +8,7 @@ function invoke(func, param, cb) {
 
 function callback(res) {
 	return function(r) {
+		console.log('will return data = ' + r.data + ', status = ' + r.status);
 		res.json(r.data, r.status);
 	};
 }
@@ -25,9 +26,9 @@ exports.readAll = function(req, res) {
 }
 
 exports.update = function(req, res) {
-	invoke(goodDA.update, req.body, callback(res));
+	invoke(goodDA.update, req.params.id, req.body, callback(res));
 }
 
 exports.delete = function(req, res) {
-	invoke(goodDA.delete, )
+	invoke(goodDA.delete, req.params.id, callback(res));
 }

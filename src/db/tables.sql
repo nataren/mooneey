@@ -17,7 +17,8 @@ CREATE TABLE good (
 good_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 good_name VARCHAR(255) NOT NULL,
 good_date TIMESTAMP DEFAULT NOW() NOT NULL,
-good_unit_price DECIMAL(10, 2) NOT NULL
+good_unit_price DECIMAL(10, 2) NOT NULL,
+UNIQUE KEY (good_name, good_date, good_unit_price)
 ) ENGINE = INNODB;
 
 CREATE TABLE expense (
