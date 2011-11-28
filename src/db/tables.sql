@@ -16,8 +16,8 @@ UNIQUE KEY (user_id, user_email)
 CREATE TABLE good (
 good_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 good_name VARCHAR(255) NOT NULL,
-good_date TIMESTAMP DEFAULT NOW(),
-good_unit_price INT NOT NULL
+good_date TIMESTAMP DEFAULT NOW() NOT NULL,
+good_unit_price DECIMAL(10, 2) NOT NULL
 ) ENGINE = INNODB;
 
 CREATE TABLE expense (
